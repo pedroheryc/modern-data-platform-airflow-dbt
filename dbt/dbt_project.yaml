@@ -1,0 +1,22 @@
+name: modern_platform
+version: "0.1.0"
+config-version: 2
+
+profile: modern_platform
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["models"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages", "logs"]
+
+models:
+  modern_platform:
+    staging:
+      +schema: silver
+      +materialized: view
+    marts:
+      +schema: gold
+      +materialized: table
